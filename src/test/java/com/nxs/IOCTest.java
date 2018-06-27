@@ -1,6 +1,7 @@
 package com.nxs;
 
 import com.nxs.config.MainConfig;
+import com.nxs.config.ScopeConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -20,5 +21,22 @@ public class IOCTest {
              ) {
             System.out.println(beanDefinitionName);
         }
+    }
+
+    @Test
+    public void test02(){
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ScopeConfig.class);
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        for (String beanDefinitionName: beanDefinitionNames
+        ) {
+            System.out.println(beanDefinitionName);
+        }
+
+        /**
+         * 默认是单实例的
+         */
+        Object person = applicationContext.getBean("person");
+        Object person2 = applicationContext.getBean("person");
+        System.out.println(person == person2);
     }
 }
