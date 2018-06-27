@@ -1,18 +1,19 @@
 package com.nxs.config;
 
 import com.nxs.bean.Person;
+import com.nxs.condition.LinuxCondition;
+import com.nxs.condition.WindowsCondition;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 /**
  * @program: spring-annotation
  * @description: 调整实例的作用域
  * @author: NieXiaoshuang
  * @create: 2018-06-27 22:45
+ * (@Conditional)放在类上 满足当前条件，这个类中配置的所有bean注册才会生效
  **/
+@Conditional({WindowsCondition.class})
 @Configuration
 public class ScopeConfig {
 
@@ -31,5 +32,22 @@ public class ScopeConfig {
     @Bean("person")
     public Person person(){
         return new Person("张三", 25);
+    }
+
+    /**
+     * (@Conditional):按照一定条件进行判断，满足条件给容器注册bean
+     * 如果操作系统是windows在容器中注册 bill
+     * 如果是linux则在容器中注册 linus
+     */
+    @Conditional({WindowsCondition.class})
+    @Bean("bill")
+    public Person bill(){
+        return new Person("Bill Gates", 62);
+    }
+
+    @Conditional({LinuxCondition.class})
+    @Bean("linus")
+    public Person linus(){
+        return new Person("linus", 50);
     }
 }

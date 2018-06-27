@@ -1,9 +1,13 @@
 package com.nxs;
 
+import com.nxs.bean.Person;
 import com.nxs.config.MainConfig;
 import com.nxs.config.ScopeConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+
+import java.util.Map;
 
 /**
  * @program: spring-annotation
@@ -38,5 +42,22 @@ public class IOCTest {
         Object person = applicationContext.getBean("person");
         Object person2 = applicationContext.getBean("person");
         System.out.println(person == person2);
+    }
+
+    @Test
+    public void test03() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ScopeConfig.class);
+
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();
+        String property = environment.getProperty("os.name");
+        System.out.println(property);
+        String[] beanNamesForType = applicationContext.getBeanNamesForType(Person.class);
+        for (String name: beanNamesForType
+        ) {
+            System.out.println(name);
+        }
+
+        Map<String, Person> beansOfType = applicationContext.getBeansOfType(Person.class);
+        System.out.println(beansOfType);
     }
 }
