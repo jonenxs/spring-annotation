@@ -1,6 +1,7 @@
 package com.nxs.config;
 
 import com.nxs.bean.Color;
+import com.nxs.bean.ColorFactoryBean;
 import com.nxs.bean.Person;
 import com.nxs.bean.Red;
 import com.nxs.condition.LinuxCondition;
@@ -65,5 +66,12 @@ public class ScopeConfig {
      *        1) @Import(要导入到容器中的组件)容器就会自动祖册这个组件
      *        2）ImportSelector 返回需要导入组件的全类名数组
      *        3）ImportBeanDefinitionRegistrar 手工注册bean到容器中
+     * 4）使用Spring提供的FactoryBean
+     *      默认获取的是调用getObject创建的对象，若获取FactoryBean本身，我们需要在id前加一个 "&"
      */
+
+    @Bean
+    public ColorFactoryBean colorFactoryBean(){
+        return new ColorFactoryBean();
+    }
 }
