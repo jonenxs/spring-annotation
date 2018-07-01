@@ -17,6 +17,8 @@ import java.util.Map;
  **/
 public class IOCTest {
 
+    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ScopeConfig.class);
+
     @Test
     public void test01(){
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
@@ -46,7 +48,7 @@ public class IOCTest {
 
     @Test
     public void test03() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ScopeConfig.class);
+
 
         ConfigurableEnvironment environment = applicationContext.getEnvironment();
         String property = environment.getProperty("os.name");
@@ -59,5 +61,18 @@ public class IOCTest {
 
         Map<String, Person> beansOfType = applicationContext.getBeansOfType(Person.class);
         System.out.println(beansOfType);
+    }
+
+    private void printBeans(AnnotationConfigApplicationContext applicationContext){
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        for (String beanDefinitionName: beanDefinitionNames
+        ) {
+            System.out.println(beanDefinitionName);
+        }
+    }
+
+    @Test
+    public void testImport(){
+        printBeans(applicationContext);
     }
 }

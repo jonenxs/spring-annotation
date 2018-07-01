@@ -1,6 +1,8 @@
 package com.nxs.config;
 
+import com.nxs.bean.Color;
 import com.nxs.bean.Person;
+import com.nxs.bean.Red;
 import com.nxs.condition.LinuxCondition;
 import com.nxs.condition.WindowsCondition;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -12,9 +14,11 @@ import org.springframework.context.annotation.*;
  * @author: NieXiaoshuang
  * @create: 2018-06-27 22:45
  * (@Conditional)放在类上 满足当前条件，这个类中配置的所有bean注册才会生效
+ * (@Import)导入组件，id默认是组件的全类名
  **/
-@Conditional({WindowsCondition.class})
+//@Conditional({WindowsCondition.class})
 @Configuration
+@Import({Color.class, Red.class})
 public class ScopeConfig {
 
     /**
@@ -50,4 +54,12 @@ public class ScopeConfig {
     public Person linus(){
         return new Person("linus", 50);
     }
+
+    /**
+     * 注册组件的方式
+     * 1）包扫描+注解 @Controller @Service @Repository @Component []
+     * 2) @Bean[导入第三方包组件]
+     * 3) @Import [快速给容器导入一个组件]
+     *        1)@Import(要导入到容器中的组件)容器就会自动祖册这个组件
+     */
 }

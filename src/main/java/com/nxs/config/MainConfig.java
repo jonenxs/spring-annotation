@@ -24,15 +24,15 @@ import org.springframework.stereotype.Service;
  * FilterType.CUSTOM 按照自定义规则
  **/
 @Configuration
-@ComponentScan(value = "com.nxs" ,
+@ComponentScan(value = "com.nxs")// ,
 //        excludeFilters = {
 //        @ComponentScan.Filter(type = FilterType.ANNOTATION,classes = {Controller.class})
 //        },
-        includeFilters = {
+//        includeFilters = {
 //        @ComponentScan.Filter(type = FilterType.ANNOTATION,classes = {Service.class}),
 //                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,classes = {BookService.class}),
-                @ComponentScan.Filter(type = FilterType.CUSTOM,classes = MyTypeFilter.class)
-}, useDefaultFilters = false)
+//                @ComponentScan.Filter(type = FilterType.CUSTOM,classes = MyTypeFilter.class)
+//}, useDefaultFilters = false)
 public class MainConfig {
 
     /**
