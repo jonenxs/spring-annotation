@@ -4,6 +4,7 @@ import com.nxs.bean.Color;
 import com.nxs.bean.Person;
 import com.nxs.bean.Red;
 import com.nxs.condition.LinuxCondition;
+import com.nxs.condition.MyImportBeanDefinitionRegistrar;
 import com.nxs.condition.MyImportSelector;
 import com.nxs.condition.WindowsCondition;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.*;
  **/
 //@Conditional({WindowsCondition.class})
 @Configuration
-@Import({Color.class, Red.class, MyImportSelector.class})
+@Import({Color.class, Red.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
 public class ScopeConfig {
 
     /**
@@ -61,7 +62,8 @@ public class ScopeConfig {
      * 1）包扫描+注解 @Controller @Service @Repository @Component []
      * 2) @Bean[导入第三方包组件]
      * 3) @Import [快速给容器导入一个组件]
-     *        1)@Import(要导入到容器中的组件)容器就会自动祖册这个组件
-     *        2）@ImportSelector 返回需要导入组件的全类名数组
+     *        1) @Import(要导入到容器中的组件)容器就会自动祖册这个组件
+     *        2）ImportSelector 返回需要导入组件的全类名数组
+     *        3）ImportBeanDefinitionRegistrar 手工注册bean到容器中
      */
 }
