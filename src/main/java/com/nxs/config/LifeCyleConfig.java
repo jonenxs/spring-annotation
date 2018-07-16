@@ -22,6 +22,9 @@ import org.springframework.context.annotation.Configuration;
  * 1)、指定初始化和销毁方法
  *      指定init-method="" destroy-method=""
  * 2)、通过让bean实现InitializingBean(定义初始化逻辑) 和DisposableBean（定义销毁逻辑）
+ * 3)、可以使用JSR250
+ *      @PostConstruct : 在Bean创建完成并且属性赋值完成
+ *      @PreDestory : 在容器销毁bean之前通知我们进行清理操作
  * @program: spring-annotation
  * @description: 生命周期配置类
  * @author: NieXiaoshuang
