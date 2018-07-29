@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
 public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("MyBeanPostProcessor --- postProcessBeforeInitialization --- bean:" + bean + " --- beanNname:" + beanName);
+        System.out.println("MyBeanPostProcessor --- postProcessBeforeInitialization --- bean:" + bean + " --- beanName:" + beanName);
         return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("MyBeanPostProcessor --- postProcessAfterInitialization --- bean:" + bean + " --- beanNname:" + beanName);
+        System.out.println("MyBeanPostProcessor --- postProcessAfterInitialization --- bean:" + bean + " --- beanName:" + beanName);
         return bean;
     }
 }
