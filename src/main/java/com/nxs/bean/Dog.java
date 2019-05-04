@@ -1,5 +1,8 @@
 package com.nxs.bean;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,9 +13,13 @@ import javax.annotation.PreDestroy;
  * @description: Dog
  * @author: NieXiaoshuang
  * @create: 2018-07-16 23:13
+ * 通过实现 ApplicationContextAware 可以获取到 应用程序上下文
  **/
 @Component
-public class Dog {
+public class Dog implements ApplicationContextAware {
+
+    private ApplicationContext applicationContext;
+
     public Dog() {
         System.out.println("dog ---- constructor ----");
     }
@@ -31,5 +38,10 @@ public class Dog {
     @PreDestroy
     public void destroy(){
         System.out.println("dog --- PreDestroy ---");
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
     }
 }

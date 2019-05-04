@@ -5,7 +5,7 @@ import org.springframework.core.type.AnnotationMetadata;
 
 /**
  * @program: spring-annotation
- * @description: 自定义路基返回需要导入的组件
+ * @description: 自定义逻辑返回需要导入的组件
  * @author: NieXiaoshuang
  * @create: 2018-07-01 21:03
  **/

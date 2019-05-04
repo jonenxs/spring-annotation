@@ -1,5 +1,6 @@
 package com.nxs.dao;
 
+import lombok.ToString;
 import org.springframework.stereotype.Repository;
 
 /**

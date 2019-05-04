@@ -63,7 +63,7 @@ public class ScopeConfig {
      * 1）包扫描+注解 @Controller @Service @Repository @Component []
      * 2) @Bean[导入第三方包组件]
      * 3) @Import [快速给容器导入一个组件]
-     *        1) @Import(要导入到容器中的组件)容器就会自动祖册这个组件
+     *        1) @Import(要导入到容器中的组件)容器就会自动注册这个组件，id默认为全类名
      *        2）ImportSelector 返回需要导入组件的全类名数组
      *        3）ImportBeanDefinitionRegistrar 手工注册bean到容器中
      * 4）使用Spring提供的FactoryBean

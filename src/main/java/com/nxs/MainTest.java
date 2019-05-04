@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
  * @program: spring-annotation
@@ -31,5 +32,9 @@ public class MainTest {
         for (String beanNames : beanNamesForType) {
             log.info("beanNames=" + beanNames);
         }
+
+        ConfigurableEnvironment environment = configApplicationContext.getEnvironment();
+        System.out.println(environment.getProperty("person.nickName"));
+        configApplicationContext.close();
     }
 }

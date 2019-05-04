@@ -12,11 +12,24 @@ import org.springframework.stereotype.Component;
  **/
 @Component
 public class Cat implements InitializingBean, DisposableBean {
+
+    public Cat() {
+        System.out.println("cat --- constructor ---");
+    }
+
+    /**
+     * 自定义初始化方法
+     * @throws Exception
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("cat --- afterPropertiesSet ---");
     }
 
+    /**
+     * 自定义销毁方法
+     * @throws Exception
+     */
     @Override
     public void destroy() throws Exception {
         System.out.println("cat --- destroy ---");
